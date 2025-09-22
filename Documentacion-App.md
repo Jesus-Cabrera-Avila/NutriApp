@@ -15,3 +15,5 @@
 - **Programación**
 ## Gado y Grupo
 - **3-D**
+# Objetivo
+- **Hacer un sitio web para consientizar a la gente sobre la buena alimentacion**
