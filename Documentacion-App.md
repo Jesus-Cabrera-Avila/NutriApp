@@ -5,8 +5,8 @@
 - Evan Alanzo Galindo Escareño
 
 ## Correos Electrónicos
-- [24308060610607@cetis61.edu.mx](mailto:24308060610607@cetis61.edu.mx)  
-- [24308060610646@cetis61.edu.mx](mailto:24308060610646@cetis61.edu.mx)
+- **correo de Jesus**[24308060610607@cetis61.edu.mx](mailto:24308060610607@cetis61.edu.mx)  
+- **correo de Evan**[24308060610646@cetis61.edu.mx](mailto:24308060610646@cetis61.edu.mx)
 
 ## Escuela
 - **CETis 61**
