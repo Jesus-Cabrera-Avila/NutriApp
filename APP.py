@@ -11,5 +11,10 @@ def base():
 def inicio():
     return render_template('inicio.html')
 
+@app.route('/objetivoss')
+def inicio():
+    return render_template('objetivoss.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
