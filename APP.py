@@ -15,6 +15,10 @@ def inicio():
 def objetivos():
     return render_template('objetivos.html')
 
+@app.route('/p y r')
+def P_R():
+    return render_template('p y r.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
