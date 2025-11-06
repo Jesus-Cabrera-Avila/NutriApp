@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+
+<div class="container text-center">
+
+    <header class="bg-warning text-dark py-6 mt-6">
+        <div class="container text-center">
+            <h1 class="fw-bold">objetivos</h1>
+
+            <main class="container py-5">
+                <section class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8">
+                        <div class="card shadow-lg border-0 rounded-4">
+                            <div class="card-body p-4">
+                                <h2 class="text-center mb-4 text-primary">Dinos cuales son tus objetivos</h2>
+
+                                <div class="mb-3">
+                                    <label class="form-label d-block">¿Desea bajar de peso?</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="bajar_peso" id="radioSi1"
+                                            value="si" required>
+                                        <label class="form-check-label" for="radioSi1">
+                                            Sí
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="bajar_peso" id="radioNo1"
+                                            value="no" required>
+                                        <label class="form-check-label" for="radioNo1">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label d-block">¿Desea ganar masa muscular?</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="masa_muscular" id="radioSi2"
+                                            value="si" required>
+                                        <label class="form-check-label" for="radioSi2">
+                                            Sí
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="masa_muscular" id="radioNo2"
+                                            value="no" required>
+                                        <label class="form-check-label" for="radioNo2">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label d-block">¿Desea mantener su peso?</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mantener_peso" id="radioSi3"
+                                            value="si" required>
+                                        <label class="form-check-label" for="radioSi3">
+                                            Sí
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mantener_peso" id="radioNo3"
+                                            value="no" required>
+                                        <label class="form-check-label" for="radioNo3">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label d-block">¿Desea controlar su condición (diabetes, hipertensión)?</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="controlar_condicion"
+                                            id="radioSi5" value="si" required>
+                                        <label class="form-check-label" for="radioSi5">
+                                            Sí
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="controlar_condicion"
+                                            id="radioNo5" value="no" required>
+                                        <label class="form-check-label" for="radioNo5">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="d-grid mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg">Siguiente</button>
+                                </div>
+
+                            </div> 
+                        </div> 
+                    </div> 
+                </section>
+            </main>
+        </div>
+    </header>
+</div>
+
+{% endblock %}

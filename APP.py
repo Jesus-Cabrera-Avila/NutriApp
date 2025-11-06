@@ -11,9 +11,9 @@ def base():
 def inicio():
     return render_template('inicio.html')
 
-@app.route('/objetivoss')
-def inicio():
-    return render_template('objetivoss.html')
+@app.route('/objetivos')
+def objetivos():
+    return render_template('objetivos.html')
 
 
 if __name__ == '__main__':
