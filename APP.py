@@ -27,7 +27,7 @@ def inicio():
 
     return render_template('inicio.html')
 
-@app.route('/iniciar cesion', methods=['GET', 'POST'])
+@app.route('/iniciar secion', methods=['GET', 'POST'])
 def iniciar_sesion():
     if request.method == 'POST':
         correo = request.form.get('correo')
@@ -66,3 +66,4 @@ def P_R():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
