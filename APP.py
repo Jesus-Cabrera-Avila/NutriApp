@@ -26,6 +26,11 @@ def inicio():
 
     return render_template('inicio.html')
 
+
+@app.route('/objetivos')
+def objetivos():
+    return render_template('objetivos.html')
+
 @app.route('/cerrar')
 def cerrar():
     session.pop('usuario', None)
