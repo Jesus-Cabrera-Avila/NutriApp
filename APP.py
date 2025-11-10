@@ -18,6 +18,7 @@ def inicio():
         genero = request.form.get('genero')
         correo = request.form.get('correo')
         contraseña = request.form.get('contraseña')
+        edad = request.form.get('edad')
 
         with open("usuarios.txt", "a") as archivo:
             archivo.write(f"{correo},{contraseña},{nombre},{apellido},{peso},{altura},{edad},{genero}\n")
@@ -25,6 +26,28 @@ def inicio():
         return redirect(url_for('base.html'))
 
     return render_template('inicio.html')
+
+@app.route('/iniciar cesion', methods=['GET', 'POST'])
+def iniciar_sesion():
+    if request.method == 'POST':
+        correo = request.form.get('correo')
+        contraseña = request.form.get('contraseña')
+
+        try:
+            with open("usuarios.txt", "r") as archivo:
+                usuarios = archivo.readlines()
+        except FileNotFoundError:
+            usuarios = []
+
+        for usuario in usuarios:
+            datos = usuario.strip().split(',')
+            if len(datos) >= 2 and correo == datos[0] and contraseña == datos[1]:
+                session['usuario'] = datos[2]  
+                return redirect(url_for('inicio'))
+
+        return render_template('iniciar cesion.html', error="La contraseña o el Gmail son incorrectos")
+
+    return render_template('iniciar cesion.html')
 
 
 @app.route('/objetivos')
