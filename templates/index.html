@@ -10,14 +10,36 @@
 
     <header class="bg-warning text-dark py-6 mt-6">
         <div class="container text-center">
-            <h1 class="fw-bold">Crea tu cuenta</h1>
+            <h1 class="fw-bold">Alimentos</h1>
 
             <main class="container py-5">
                 <section class="row justify-content-center">
                     <div class="col-md-10 col-lg-8">
                         <div class="card shadow-lg border-0 rounded-4">
                             <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Registra tus datos</h1>
+                                <h1 class="text-center mb-4 text-primary">Busca informacion sobre tus alimentos</h1>
+                                <h5>aqui podras buscar toda la informacion nutricional sobre tus alimentos favoritos</h5>
 
+<form action="/search" method="POST" class="mx-auto" style="max-width: 600px;">
 
-{%endblock%}
+                                <div class="row">
+                                    <div class="col-md-12"> 
+                                    <label for="nombre" class="form-label">Busca</label>
+                                    <input type="text" class="form-control" id="buscar" name="buscar" placeholder="Ejemplo: manzana" required>
+                                </div>
+
+                                <div class="d-grid mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+        </div>
+    </header>
+</div>
+
+{% endblock %}

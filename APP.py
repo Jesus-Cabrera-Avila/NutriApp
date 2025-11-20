@@ -62,5 +62,9 @@ def cerrar():
 def P_R():
     return render_template('p_y_r.html')
 
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
