@@ -59,12 +59,16 @@ def cerrar():
     return redirect(url_for('inicio'))
 
 @app.route('/p_y_r')
-def P_R():
+def p_y_r():
     return render_template('p_y_r.html')
 
 @app.route('/index')
 def index():
     return render_template('index.html')
+
+@app.route('/calculadoras')
+def calculadoras():
+    return render_template('calculadoras.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

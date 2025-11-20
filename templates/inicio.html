@@ -39,6 +39,7 @@
                                 <div class="mb-3">
                                     <label for="ejercicio" class="form-label">actividad</label>
                                     <select class="form-select" id="actividad" name="actividad" required>
+                                        <option value="ejercicio">Selecciona una opcion</option>
                                         <option value="ejercicio">Sedentario (poco o nada de ejercicio)</option>
                                         <option value="ejercicio">Principiante (1-3 veces por semana)</option>
                                         <option value="ejercicio">Intermedio (3-5 ves por semana)</option>
@@ -85,7 +86,7 @@
                                 </div>
 
                                 <div class="d-grid mt-4">
-                                    <button type="submit" class="btn btn-primary btn-lg">siguiente</button>
+                                    <a href="{{ url_for('objetivos') }}" class="btn btn-primary btn-lg">Siguiente</a>
                                 </div>
 
                                 </form>
