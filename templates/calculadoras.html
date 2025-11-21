@@ -12,262 +12,319 @@
         <div class="container text-center">
             <h1 class="fw-bold">Calculadoras</h1>
 
-            <main class="container py-5">
-                <section class="row justify-content-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Calculadora de Índice de Masa Corporal (IMC)</h1>
+    <main class="container py-5">
+        <section class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <h1 class="text-center mb-4 text-primary">Calculadora de Índice de Masa Corporal (IMC)</h1>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="genero" class="form-label">Sexo</label>
-                                        <select class="form-select" id="sexo" name="sexo" required>
-                                            <option value="ejercicio">Selecciona tu genero</option>
-                                            <option value="ejercicio">Hombre</option>
-                                            <option value="ejercicio">Mujer</option>
-                                        </select>
-                                    </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="grasa" class="form-label">Edad</label>
-                                    <input type="number" class="form-control" id="edad" name="edad" placeholder="en años" required>
-                                </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Peso</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="00.0" required>
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Altura</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="000.0" required>
-                                    </div>
-                                </div>
-
-                                    <div class="d-grid mt-4">
-                                        <button type="button" id="calcular-imc" class="btn btn-primary btn-lg">Calcular IMC</button>
-                                    </div>
-
-                                    <div id="imc-result" class="mt-4" style="display:none;">
-                                        <div class="card border-0 shadow-sm p-3">
-                                            <h5 class="mb-2">Resultados del cálculo</h5>
-                                            <p id="imc-valor" class="mb-1"></p>
-                                            <p id="imc-clasificacion" class="mb-1"></p>
-                                            <p id="imc-peso-ideal" class="mb-0"></p>
-                                        </div>
-                                    </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-
-
-            <main class="container py-5">
-                <section class="row justify-content-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Calculadora de Tasa Metabólica Basal (TMB)</h1>
+                        <form action="/calculadoras" method="POST">
+                            <input type="hidden" name="calculadora" value="imc">
 
                             <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="genero" class="form-label">Sexo</label>
-                                        <select class="form-select" id="sexo" name="sexo" required>
-                                            <option value="ejercicio">Selecciona tu genero</option>
-                                            <option value="ejercicio">Hombre</option>
-                                            <option value="ejercicio">Mujer</option>
-                                        </select>
-                                    </div>
-
                                 <div class="col-md-6 mb-3">
-                                    <label for="grasa" class="form-label">Edad</label>
-                                    <input type="number" class="form-control" id="edad" name="edad" placeholder="en años" required>
-                                </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Peso</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="00.0" required>
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Altura</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="000.0" required>
-                                    </div>
-                                </div>
-
-                                    <div class="d-grid mt-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">Calcular TMB</button>
-                                    </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <main class="container py-5">
-                <section class="row justify-content-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Calculadora de Gasto Calórico Total (GCT)</h1>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="genero" class="form-label">Sexo</label>
-                                        <select class="form-select" id="sexo" name="sexo" required>
-                                            <option value="ejercicio">Selecciona tu genero</option>
-                                            <option value="ejercicio">Hombre</option>
-                                            <option value="ejercicio">Mujer</option>
-                                        </select>
-                                    </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="grasa" class="form-label">Edad</label>
-                                    <input type="number" class="form-control" id="edad" name="edad" placeholder="en años" required>
-                                </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Peso</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="00.0" required>
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Altura</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="000.0" required>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="ejercicio" class="form-label">actividad</label>
-                                    <select class="form-select" id="actividad" name="actividad" required>
-                                        <option value="ejercicio">Selecciona una opcion</option>
-                                        <option value="ejercicio">Sedentario (poco o nada de ejercicio)</option>
-                                        <option value="ejercicio">Principiante (1-3 veces por semana)</option>
-                                        <option value="ejercicio">Intermedio (3-5 ves por semana)</option>
-                                        <option value="ejercicio">Avanzado (6-7 veces por semana)</option>
+                                    <label class="form-label">Sexo</label>
+                                    <select class="form-select" name="sexo" required>
+                                        <option value="">Selecciona tu género</option>
+                                        <option value="hombre">Hombre</option>
+                                        <option value="mujer">Mujer</option>
                                     </select>
                                 </div>
 
-                                    <div class="d-grid mt-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">Calcular GCT</button>
-                                    </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <main class="container py-5">
-                <section class="row justify-content-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Calculadora de peso ideal</h1>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="genero" class="form-label">Sexo</label>
-                                        <select class="form-select" id="sexo" name="sexo" required>
-                                            <option value="ejercicio">Selecciona tu genero</option>
-                                            <option value="ejercicio">Hombre</option>
-                                            <option value="ejercicio">Mujer</option>
-                                        </select>
-                                    </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Edad</label>
+                                    <input type="number" class="form-control" name="edad" required>
+                                </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="grasa" class="form-label">Edad</label>
-                                    <input type="number" class="form-control" id="edad" name="edad" placeholder="en años" required>
+                                    <label class="form-label">Peso (kg)</label>
+                                    <input type="number" class="form-control" name="peso" required>
                                 </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Peso</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="00.0" required>
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Altura</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="000.0" required>
-                                    </div>
-                                </div>
-
-                                    <div class="d-grid mt-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">Calcular peso ideal ajustado a IMC</button>
-                                    </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <main class="container py-5">
-                <section class="row justify-content-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">  Calculadora de Macronutrientes</h1>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="genero" class="form-label">Sexo</label>
-                                        <select class="form-select" id="sexo" name="sexo" required>
-                                            <option value="ejercicio">Selecciona tu genero</option>
-                                            <option value="ejercicio">Hombre</option>
-                                            <option value="ejercicio">Mujer</option>
-                                        </select>
-                                    </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="grasa" class="form-label">Edad</label>
-                                    <input type="number" class="form-control" id="edad" name="edad" placeholder="en años" required>
+                                    <label class="form-label">Altura (cm)</label>
+                                    <input type="number" class="form-control" name="altura" required>
                                 </div>
+                            </div>
 
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Peso</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="00.0" required>
-                                    </div>
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Calcular IMC</button>
+                            </div>
 
-                                    <div class="col-md-6 mb-3">
-                                        <label for="grasa" class="form-label">Altura</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" placeholder="000.0" required>
-                                    </div>
+                            {% if resultado.imc %}
+                                <div class="alert alert-info mt-4 text-center">
+                                    <h4>Tu IMC es: {{ resultado.imc }}</h4>
                                 </div>
+                            {% endif %}
+                        </form>
 
-                                <div class="mb-3">
-                                    <label for="ejercicio" class="form-label">actividad</label>
-                                    <select class="form-select" id="actividad" name="actividad" required>
-                                        <option value="ejercicio">Sedentario (poco o nada de ejercicio)</option>
-                                        <option value="ejercicio">Principiante (1-3 veces por semana)</option>
-                                        <option value="ejercicio">Intermedio (3-5 ves por semana)</option>
-                                        <option value="ejercicio">Avanzado (6-7 veces por semana)</option>
-                                    </select>
-                                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-                                <div class="mb-3">
-                                    <label for="objetivo" class="form-label">Objetivo</label>
-                                    <select class="form-select" id="objetivo" name="objetivo" required>
-                                        <option value="ejercicio">Selecciona una opcion</option>
-                                        <option value="ejercicio">Ganar masa moscular</option>
-                                        <option value="ejercicio">Bajar de peso</option>
-                                        <option value="ejercicio">mantener peso</option>
-                                    </select>
-                                </div>
+</div>
 
-                                    <div class="d-grid mt-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">Calcular Macronutrientes</button>
-                                    </div>
+<main class="container py-5">
+    <section class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
 
+                    <h1 class="text-center mb-4 text-primary">
+                        Calculadora de Tasa Metabólica Basal (TMB)
+                    </h1>
+
+                    <form action="/calculadoras" method="POST">
+
+                        <input type="hidden" name="calculadora" value="tmb">
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select class="form-select" id="sexo" name="sexo" required>
+                                    <option value="">Selecciona tu género</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="edad" name="edad" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="peso" class="form-label">Peso (kg)</label>
+                                <input type="number" class="form-control" id="peso" name="peso" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="altura" class="form-label">Altura (cm)</label>
+                                <input type="number" class="form-control" id="altura" name="altura" required>
+                            </div>
+
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Calcular TMB</button>
+                        </div>
+
+                        {% if resultado.tmb %}
+                        <div class="alert alert-info mt-4 text-center">
+                            <h4>Tu TMB es: {{ resultado.tmb }}</h4>
+                        </div>
+                        {% endif %}
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<main class="container py-5">
+    <section class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h1 class="text-center mb-4 text-primary">Calculadora de Gasto Calórico Total (GCT)</h1>
+
+                    <form action="/calculadoras" method="POST">
+                        <input type="hidden" name="calculadora" value="gct">
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Sexo</label>
+                                <select class="form-select" id="sexo" name="sexo" required>
+                                    <option value="">Selecciona tu género</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="edad" name="edad" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Peso (kg)</label>
+                                <input type="number" class="form-control" id="peso" name="peso" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Altura (cm)</label>
+                                <input type="number" class="form-control" id="altura" name="altura" required>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Actividad física</label>
+                            <select class="form-select" id="actividad" name="actividad" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="1.2">Sedentario (poco o nada de ejercicio)</option>
+                                <option value="1.375">Principiante (1-3 veces por semana)</option>
+                                <option value="1.55">Intermedio (3-5 veces por semana)</option>
+                                <option value="1.725">Avanzado (6-7 veces por semana)</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Calcular GCT</button>
+                        </div>
+
+                    </form>
+
+                    {% if resultado.gct %}
+                    <div class="alert alert-info mt-4 text-center">
+                        <h4>Tu Gasto Calórico Total es: {{ resultado.gct }} kcal</h4>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<main class="container py-5">
+    <section class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h1 class="text-center mb-4 text-primary">Calculadora de Peso Ideal</h1>
+
+                    <form method="POST" action="/calculadoras">
+                        <input type="hidden" name="calculadora" value="peso_ideal">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select class="form-select" id="sexo" name="sexo" required>
+                                    <option value="">Selecciona tu sexo</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="edad" name="edad" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="peso" class="form-label">Peso actual</label>
+                                <input type="number" step="0.1" class="form-control" id="peso" name="peso" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="altura" class="form-label">Altura</label>
+                                <input type="number" step="0.1" class="form-control" id="altura" name="altura" required>
                             </div>
                         </div>
-                    </div>
-                </section>
-            </main>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Calcular peso ideal ajustado a IMC</button>
+                        </div>
+                    </form>
+
+                    {% if resultado.peso_ideal %}
+                        <div class="alert alert-info mt-4 text-center">
+                            <h4>Tu peso ideal es: {{ resultado.peso_ideal }} kg</h4>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<main class="container py-5">
+    <section class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h1 class="text-center mb-4 text-primary">Calculadora de Macronutrientes</h1>
+
+                    <form method="POST" action="/calculadoras">
+                        <input type="hidden" name="calculadora" value="macros">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select class="form-select" id="sexo" name="sexo" required>
+                                    <option value="">Selecciona tu sexo</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="edad" name="edad" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="peso" class="form-label">Peso (kg)</label>
+                                <input type="number" step="0.1" class="form-control" id="peso" name="peso" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="altura" class="form-label">Altura (cm)</label>
+                                <input type="number" step="0.1" class="form-control" id="altura" name="altura" required>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="actividad" class="form-label">Actividad física</label>
+                                <select class="form-select" id="actividad" name="actividad" required>
+                                    <option value="">Selecciona tu nivel</option>
+                                    <option value="sedentario">Sedentario (poco o nada de ejercicio)</option>
+                                    <option value="principiante">Principiante (1-3 veces por semana)</option>
+                                    <option value="intermedio">Intermedio (3-5 veces por semana)</option>
+                                    <option value="avanzado">Avanzado (6-7 veces por semana)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="objetivo" class="form-label">Objetivo</label>
+                                <select class="form-select" id="objetivo" name="objetivo" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="ganar masa muscular">Ganar masa muscular</option>
+                                    <option value="bajar de peso">Bajar de peso</option>
+                                    <option value="mantener peso">Mantener peso</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Calcular Macronutrientes</button>
+                        </div>
+                    </form>
+
+                    {% if resultado.proteinas %}
+                        <div class="alert alert-info mt-4 text-center">
+                            <h4 class="mb-3">Resultados</h4>
+                            <p><strong>Calorías diarias:</strong> {{ resultado.calorias_objetivo }} kcal</p>
+                            <p><strong>Proteínas:</strong> {{ resultado.proteinas }} g</p>
+                            <p><strong>Grasas:</strong> {{ resultado.grasas }} g</p>
+                            <p><strong>Carbohidratos:</strong> {{ resultado.carbohidratos }} g</p>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
 
         </div>
     </header>
