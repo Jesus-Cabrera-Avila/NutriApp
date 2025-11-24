@@ -10,3 +10,5 @@ pip install -r requirements.txt
  py -m venv venv
  venv\Scripts\activate
 pip install flask requests
+
+https://antojoentucocina.com/receta/recetas-faciles-sanas-rapidas-economicas
