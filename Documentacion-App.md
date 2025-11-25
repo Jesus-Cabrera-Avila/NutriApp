@@ -59,7 +59,7 @@
 
 ### 2.  Soporte para parsing de lenguaje natural (“natural language”), búsqueda instantánea/autocompletar, identificación de ejercicio, etc.
 
-# Tiene un plan gratuito (“free key” / desarrollador) con límites. Planes pagos con más capacidad.
+## Tiene un plan gratuito (“free key” / desarrollador) con límites. Planes pagos con más capacidad.
 ## En algunas comparativas aparece que los planes empiezan en ~US$99/mes para algunos usos, o más para usos comerciales mayores. 
 
 ## En el plan gratuito los límites son bajos (llamadas por día/minuto o número de usuarios activos) — aunque no encontré un número exacto reciente en todos los casos. En los planes de pago estos límites 
@@ -143,5 +143,6 @@
 ### •	Si necesitas recetas completas o recomendaciones dietéticas automáticas (eso lo hacen mejor Edamam o Spoonacular).
 ### •	Si tu público no está en EE. UU., algunos productos de marca quizá no aparezcan.
 ### •	Los límites de 1,000 consultas/hora pueden ser insuficientes para apps con muchos usuarios concurrentes.
+
 
 ## Algo importante que genuinamente nos molestó bastante para investigar, es que principalmente la pagina esta en ingles por lo que si no sabes ingles necesitarías un traductor a la mano.
