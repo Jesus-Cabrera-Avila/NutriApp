@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<div class="container py-5">
+
+    <h1 class="text-center mb-4 text-primary">Información del alimento</h1>
+
+    <h3 class="text-center mb-4">{{ food.description }}</h3>
+
+    <div class="card shadow-lg border-0 rounded-4 mx-auto" style="max-width: 800px;">
+        <div class="card-body p-4">
+
+            <p><strong>ID FDC:</strong> {{ food.fdcId }}</p>
+            <p><strong>Marca:</strong> {{ food.brandOwner }}</p>
+            <p><strong>Puntuación:</strong> {{ food.score }}</p>
+
+            <hr>
+
+            <h4 class="mb-3 text-secondary">Nutrientes</h4>
+
+            {% if food.nutrients %}
+                <ul class="list-group list-group-flush">
+
+                    {% for n in food.nutrients %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <strong>{{ n.nutrientName }}</strong>
+                            <span>{{ n.value }} {{ n.unitName }}</span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            {% else %}
+                <p class="text-danger">No hay información nutricional disponible.</p>
+            {% endif %}
+
+            <div class="text-center mt-4">
+                <a href="/" class="btn btn-secondary btn-lg">Buscar otro alimento</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

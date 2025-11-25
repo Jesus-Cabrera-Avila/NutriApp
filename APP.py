@@ -53,6 +53,11 @@ def iniciar_sesion():
 def objetivos():
     return render_template('objetivos.html')
 
+@app.route('/recetas')
+def recetas():
+    return render_template('recetas.html')
+
+
 @app.route('/cerrar')
 def cerrar():
     session.pop('usuario', None)
