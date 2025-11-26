@@ -22,7 +22,7 @@ def inicio():
         edad = request.form.get('edad', '')
 
         with open("usuarios.txt", "a", encoding="utf-8") as archivo:
-            archivo.write(f"{correo},{contrasena},{nombre},{apellido},{peso},{altura},{edad},{genero}\n")
+            archivo.write(f"{correo},{contrasena},{nombre},{apellido},{peso},{altura},{edad},{genero}, {actividad}\n")
 
         return redirect(url_for('base'))
 
