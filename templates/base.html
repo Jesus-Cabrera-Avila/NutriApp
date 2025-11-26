@@ -10,20 +10,25 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Nutrineichon</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/iniciar secion">Iniciar secion</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/inicio">Registrarse</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/index">Consulta de alimentos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/recetas">Resetas saludables</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Nutrineichon</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="/">Inicio</a></li>
+                <li class="nav-item">
+                    <a class="btn btn-light text-primary mx-2" href="/iniciar_sesion">Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-warning text-dark mx-2" href="/inicio">Registrarse</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/index">Consulta de alimentos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/recetas">Recetas saludables</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <div class="container my-5">
         {% block contenido %}
