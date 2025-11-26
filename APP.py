@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+import requests
 
 app = Flask(__name__)
-app.secret_key = "clave_secreta"
+app.secret_key = "Super_secreta_key"
 
 @app.route('/')
 def base():
@@ -57,7 +58,6 @@ def objetivos():
 def recetas():
     return render_template('recetas.html')
 
-
 @app.route('/cerrar')
 def cerrar():
     session.pop('usuario', None)
@@ -88,111 +88,109 @@ def calculadoras():
                 resultado["imc"] = round(imc, 2)
             except ValueError:
                 return "Error: datos inválidos."
-            
+
         elif calculadora == "tmb":
             try:
                 peso = float(request.form.get("peso", 0))
                 altura = float(request.form.get("altura", 0))
                 edad = int(request.form.get("edad", 0))
-                sexo = request.form.get("sexo", "").lower()
+                genero = request.form.get("genero", "")
 
-                if sexo == "hombre":
+                if genero == "hombre":
                     tmb = 10 * peso + 6.25 * altura - 5 * edad + 5
                 else:
                     tmb = 10 * peso + 6.25 * altura - 5 * edad - 161
 
                 resultado["tmb"] = round(tmb, 2)
-
             except ValueError:
-                return "Error: por favor ingresa peso, altura y edad válidos."
-            
-        elif calculadora == "gct":
-            try:
-                peso = float(request.form.get("peso", 0))
-                altura = float(request.form.get("altura", 0))
-                edad = int(request.form.get("edad", 0))
-                sexo = request.form.get("sexo", "").lower()
-                factor = float(request.form.get("actividad", 1.2))
-
-                if sexo == "hombre":
-                    tmb = 10 * peso + 6.25 * altura - 5 * edad + 5
-                else:
-                    tmb = 10 * peso + 6.25 * altura - 5 * edad - 161
-
-                gct = tmb * factor
-                resultado["gct"] = round(gct, 2)
-
-            except ValueError:
-                return "Error: verifica que ingresaste datos válidos."
-            
-        elif calculadora == "peso_ideal":
-            try:
-                sexo = request.form.get("sexo", "")
-                edad = float(request.form.get("edad", 0))
-                peso = float(request.form.get("peso", 0))
-                altura_cm = float(request.form.get("altura", 0))
-
-                if altura_cm <= 0:
-                    return "Error: la altura no puede ser 0 o negativa."
-
-                altura_m = altura_cm / 100.0
-
-                peso_ideal = 22 * (altura_m ** 2)
-
-                resultado["peso_ideal"] = round(peso_ideal, 2)
-
-            except ValueError:
-                return "Error: ingresa solo números válidos."
-            
-        elif calculadora == "macros":
-            try:
-                sexo = request.form.get("sexo", "").lower()
-                edad = int(request.form.get("edad", 0))
-                peso = float(request.form.get("peso", 0))
-                altura = float(request.form.get("altura", 0))
-                actividad = request.form.get("actividad", "")
-                objetivo = request.form.get("objetivo", "")
-
-                if altura <= 0 or peso <= 0 or edad <= 0:
-                    return "Error: los datos no pueden ser 0 o negativos."
-
-                if sexo == "hombre":
-                    tmb = 10 * peso + 6.25 * altura - 5 * edad + 5
-                else:
-                    tmb = 10 * peso + 6.25 * altura - 5 * edad - 161
-
-                factores = {
-                    "sedentario": 1.2,
-                    "principiante": 1.375,
-                    "intermedio": 1.55,
-                    "avanzado": 1.725
-                }
-
-                factor = factores.get(actividad, 1.2)
-
-                cal_mantenimiento = tmb * factor
-
-                if objetivo == "ganar masa muscular":
-                    cal_objetivo = cal_mantenimiento + 300
-                elif objetivo == "bajar de peso":
-                    cal_objetivo = cal_mantenimiento - 300
-                else:
-                    cal_objetivo = cal_mantenimiento
-
-                proteinas = peso * 2
-                grasas = peso * 0.8
-                carbohidratos = (cal_objetivo - (proteinas * 4 + grasas * 9)) / 4
-
-                resultado["calorias_objetivo"] = round(cal_objetivo, 2)
-                resultado["proteinas"] = round(proteinas, 2)
-                resultado["grasas"] = round(grasas, 2)
-                resultado["carbohidratos"] = round(carbohidratos, 2)
-
-            except ValueError:
-                return "Error: ingresa solo números válidos."
-
+                return "Error: datos inválidos."
 
     return render_template("calculadoras.html", resultado=resultado)
 
-if __name__ == '__main__':
+API_KEY = "jJ7mu9e8ScW6YatOKKbNFE93fpxcV5E1BLy45NrW"
+API_SEARCH = "https://api.nal.usda.gov/fdc/v1/foods/search"
+
+TRAD_NUTRIENTES = {
+    "Energy": "Energía",
+    "Protein": "Proteína",
+    "Total lipid (fat)": "Grasa total",
+    "Carbohydrate, by difference": "Carbohidratos",
+    "Fiber, total dietary": "Fibra",
+    "Sugars, total including NLEA": "Azúcares",
+    "Calcium, Ca": "Calcio",
+    "Iron, Fe": "Hierro",
+    "Magnesium, Mg": "Magnesio",
+    "Phosphorus, P": "Fósforo",
+    "Potassium, K": "Potasio",
+    "Sodium, Na": "Sodio",
+    "Zinc, Zn": "Zinc",
+    "Vitamin C, total ascorbic acid": "Vitamina C",
+    "Vitamin D (D2 + D3)": "Vitamina D",
+    "Vitamin B-12": "Vitamina B12",
+}
+
+def traducir_texto(txt):
+    trad = txt.lower()
+    trad = trad.replace("raw", "crudo")
+    trad = trad.replace("apple", "manzana")
+    trad = trad.replace("milk", "leche")
+    trad = trad.replace("rice", "arroz")
+    return trad.capitalize()
+
+@app.route("/buscar_alimento")
+@app.route("/index")
+def buscar_alimento():
+    return render_template("index.html")
+
+@app.route("/search", methods=["POST"])
+def search():
+    food_name = request.form.get("food_name", "").strip()
+
+    if not food_name:
+        return render_template("food.html", error="Debes escribir un alimento.")
+
+    params = {
+        "api_key": API_KEY,
+        "query": food_name
+    }
+
+    try:
+        resp = requests.get(API_SEARCH, params=params)
+
+        if resp.status_code != 200:
+            return render_template("food.html",
+                                   error="Error al conectar con la API USDA.")
+
+        data = resp.json()
+
+        if not data.get("foods"):
+            return render_template("food.html",
+                                   error=f'No se encontró el alimento "{food_name}".')
+
+        food = data["foods"][0]
+
+        nutrientes_es = []
+        for n in food.get("foodNutrients", []):
+            nombre_original = n.get("nutrientName", "Desconocido")
+            nombre_es = TRAD_NUTRIENTES.get(nombre_original, nombre_original)
+            nutrientes_es.append({
+                "name": nombre_original,
+                "name_es": nombre_es,
+                "amount": n.get("value", 0),
+                "unitName": n.get("unitName", "")
+            })
+
+        result = {
+            "description": food.get("description"),
+            "descripcion_es": traducir_texto(food.get("description", "")),
+            "fdcId": food.get("fdcId"),
+            "nutrients": nutrientes_es
+        }
+
+        return render_template("food.html", result=result)
+
+    except Exception as e:
+        return render_template("food.html", error=f"Error: {str(e)}")
+
+if __name__ == "__main__":
     app.run(debug=True)
