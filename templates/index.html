@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block titulo %}Buscar Alimentos - USDA{% endblock %}
+
+{% block contenido %}
+
+<h2 class="text-center mb-4">Buscar información nutricional</h2>
+
+<form action="/search" method="POST" class="mx-auto" style="max-width: 600px;">
+
+    <div class="mb-3">
+        <label for="food_name" class="form-label fw-bold">Nombre del alimento:</label>
+        <input type="text" name="food_name" id="food_name" class="form-control" 
+            placeholder="Ejemplo: manzana, arroz, leche..." required>
+    </div>
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg">
+            Buscar alimento
+        </button>
+    </div>
+
+</form>
+
+{% endblock %}

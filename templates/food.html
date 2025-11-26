@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block titulo %}Resultado - USDA{% endblock %}
+
+{% block contenido %}
+
+<h2 class="text-center mb-4">Resultado de búsqueda</h2>
+
+<div class="card shadow border-0 mx-auto" style="max-width: 700px;">
+    <div class="card-body">
+
+        <h3 class="text-primary fw-bold">{{ food.description }}</h3>
+
+        <p><strong>ID (FDC):</strong> {{ food.fdcId }}</p>
+        <p><strong>Marca:</strong> {{ food.brandOwner }}</p>
+        <p><strong>Score:</strong> {{ food.score }}</p>
+
+        <hr>
+
+        <h4 class="mb-3">Nutrientes</h4>
+
+        {% if food.nutrients %}
+            <ul class="list-group">
+                {% for n in food.nutrients %}
+                <li class="list-group-item">
+                    <strong>{{ n.nutrientName }}:</strong> {{ n.value }} {{ n.unitName }}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay información nutricional disponible.</p>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">Buscar otro alimento</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
