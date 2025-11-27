@@ -67,6 +67,10 @@ def cerrar():
 def p_y_r():
     return render_template('p_y_r.html')
 
+@app.route('/usuario')
+def usuario():
+    return render_template('usuario')
+
 @app.route('/calculadoras', methods=["GET", "POST"])
 def calculadoras():
     resultado = {}
@@ -105,7 +109,7 @@ def calculadoras():
 
 app.secret_key = "Super_Secreta_Key"
 
-API_KEY = "jJ7mu9e8ScW6YatOKKbNFE93fpxcV5E1BLy45NrW"
+API_KEY = "hWxgeCYhum2YXYilyUj5qqknNllWqUAQKSfS2l8a"
 API_SEARCH = "https://api.nal.usda.gov/fdc/v1/foods/search"
 
 TRADUCCIONES = {
@@ -188,12 +192,13 @@ def search_food():
         flash("Error al conectar con la API USDA", "error")
         return redirect(url_for('index'))
 
-@app.route('/')
+@app.route('/api')
 def home():
     return jsonify({
         "message": "Bienvenido a la API USDA personalizada",
         "uso": "/food/<nombre>"
     })
+
 
 @app.route('/food/<name>', methods=['GET'])
 def food_lookup(name):

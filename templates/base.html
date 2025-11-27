@@ -18,12 +18,13 @@
                 <a class="nav-link" href="/">Inicio</a>
                 <a class="btn btn-light text-primary mx-2" href="/iniciar_sesion">Iniciar sesión</a>
                 <a class="btn btn-warning text-dark mx-2" href="/inicio">Registrarse</a>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('cerrar') }}">Cerrar sesión</a>
-                </li>
                 <a class="nav-link" href="/recetas">Recetas saludables</a>
                 <a class="nav-link" href="/calculadoras">Calculadoras</a>
                 <a class="nav-link" href="/index">Analizador</a>
+                <a class="nav-link" href="/usuario">Perfil</a>
+                <li class="nav-item">
+                <a class="btn btn-danger text-light m-2" href="{{ url_for('cerrar') }}">Cerrar sesión</a>
+                </li>
             </ul>
         </div>
     </div>

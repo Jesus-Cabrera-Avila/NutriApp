@@ -6,6 +6,14 @@
 
 <div class="container text-center">
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     <header class="bg-warning text-dark py-6 mt-6">
         <div class="container text-center">
             <h1 class="fw-bold">Buscar informacion sobre alimentos</h1>
@@ -16,29 +24,25 @@
                         <div class="card shadow-lg border-0 rounded-4">
                             <div class="card-body p-4">
 
-<form action="/search" method="POST" class="mx-auto" style="max-width: 600px;">
+                                <form action="/search" method="POST" class="mx-auto" style="max-width: 600px;">
+                                    <div class="mb-3">
+                                        <label for="food_name" class="form-label fw-bold text-primary">Nombre del alimento:</label>
+                                        <input type="text" name="food_name" id="food_name" class="form-control" 
+                                            placeholder="Ejemplo: manzana, arroz, leche..." required>
+                                    </div>
 
-    <div class="mb-3">
-        <label for="food_name" class="form-label fw-bold text-primary">Nombre del alimento:</label>
-        <input type="text" name="food_name" id="food_name" class="form-control" 
-            placeholder="Ejemplo: manzana, arroz, leche..." required>
-    </div>
-
-    <div class="d-grid">
-        <button type="submit" class="btn btn-primary btn-lg">
-            Buscar alimento
-        </button>
-    </div>
-
-</form>
-
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            Buscar alimento
+                                        </button>
+                                    </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
-
 
         </div>
     </header>
