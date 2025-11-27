@@ -4,12 +4,22 @@
 
 {% block contenido %}
 
-<h2 class="text-center mb-4">Buscar información nutricional</h2>
+<div class="container text-center">
+
+    <header class="bg-warning text-dark py-6 mt-6">
+        <div class="container text-center">
+            <h1 class="fw-bold">Buscar informacion sobre alimentos</h1>
+
+            <main class="container py-5">
+                <section class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8">
+                        <div class="card shadow-lg border-0 rounded-4">
+                            <div class="card-body p-4">
 
 <form action="/search" method="POST" class="mx-auto" style="max-width: 600px;">
 
     <div class="mb-3">
-        <label for="food_name" class="form-label fw-bold">Nombre del alimento:</label>
+        <label for="food_name" class="form-label fw-bold text-primary">Nombre del alimento:</label>
         <input type="text" name="food_name" id="food_name" class="form-control" 
             placeholder="Ejemplo: manzana, arroz, leche..." required>
     </div>
@@ -21,5 +31,17 @@
     </div>
 
 </form>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+
+        </div>
+    </header>
+</div>
 
 {% endblock %}
