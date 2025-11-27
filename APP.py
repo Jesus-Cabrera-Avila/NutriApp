@@ -69,7 +69,37 @@ def p_y_r():
 
 @app.route('/perfil')
 def perfil():
-    return render_template('perfil.html')
+    if 'usuario' not in session:
+        return redirect(url_for('iniciar_sesion'))
+
+    usuario_sesion = session['usuario']
+    datos_usuario = None
+
+    try:
+        with open("usuarios.txt", "r", encoding="utf-8") as archivo:
+            usuarios = archivo.readlines()
+    except FileNotFoundError:
+        usuarios = []
+
+    for usuario in usuarios:
+        datos = usuario.strip().split(',')
+        if len(datos) > 2 and datos[2] == usuario_sesion:
+            datos_usuario = {
+                "correo": datos[0],
+                "nombre": datos[2],
+                "apellido": datos[3],
+                "peso": datos[4],
+                "altura": datos[5],
+                "edad": datos[6],
+                "genero": datos[7],
+                "actividad": datos[8]
+            }
+            break
+
+    if datos_usuario is None:
+        return "No se encontró la información del usuario."
+
+    return render_template('perfil.html', usuario=datos_usuario)
 
 @app.route('/calculadoras', methods=["GET", "POST"])
 def calculadoras():
@@ -250,3 +280,4 @@ def food_lookup(name):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
