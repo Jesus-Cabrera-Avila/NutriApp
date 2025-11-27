@@ -67,9 +67,9 @@ def cerrar():
 def p_y_r():
     return render_template('p_y_r.html')
 
-@app.route('/usuario')
-def usuario():
-    return render_template('usuario')
+@app.route('/perfil')
+def perfil():
+    return render_template('perfil.html')
 
 @app.route('/calculadoras', methods=["GET", "POST"])
 def calculadoras():
