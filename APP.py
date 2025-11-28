@@ -8,8 +8,8 @@ app.secret_key = "Super_secreta_key"
 def base():
     return render_template('base.html')
 
-@app.route('/inicio', methods=['GET', 'POST'])
-def inicio():
+@app.route('/registro', methods=['GET', 'POST'])
+def registro():
     if request.method == 'POST':
         nombre = request.form.get('nombre', '')
         apellido = request.form.get('apellido', '')
@@ -26,7 +26,7 @@ def inicio():
 
         return redirect(url_for('base'))
 
-    return render_template('inicio.html')
+    return render_template('registro.html')
 
 @app.route('/iniciar_sesion', methods=['GET', 'POST'])
 def iniciar_sesion():
@@ -44,7 +44,7 @@ def iniciar_sesion():
             datos = usuario.strip().split(',')
             if len(datos) >= 2 and correo == datos[0] and contrasena == datos[1]:
                 session['usuario'] = datos[2] if len(datos) > 2 else correo
-                return redirect(url_for('inicio'))
+                return redirect(url_for('registro'))
 
         return render_template('iniciar_sesion.html', error="La contraseña o el Gmail son incorrectos")
 

@@ -10,16 +10,21 @@
 
     <header class="bg-warning text-dark py-6 mt-6">
         <div class="container text-center">
-            <h1 class="fw-bold">Crea tu cuenta</h1>
 
             <main class="container py-5">
                 <section class="row justify-content-center">
                     <div class="col-md-10 col-lg-8">
                         <div class="card shadow-lg border-0 rounded-4">
                             <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Registra tus datos</h1>
+                                <h1 class="text-center mb-4 text-primary">Mi perfil</h1>
 
-
+                                    <p>Nombre: {{ usuario.nombre }}</p>
+                                    <p>Apellido: {{ usuario.apellido }}</p>
+                                    <p>Peso: {{ usuario.peso }}</p>
+                                    <p>Altura: {{ usuario.altura }}</p>
+                                    <p>Edad: {{ usuario.edad }}</p>
+                                    <p>Género: {{ usuario.genero }}</p>
+                                    <p>Actividad: {{ usuario.actividad }}</p>
                                 
                             </div>
                         </div>

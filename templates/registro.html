@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+
+<div class="container text-center">
+
+    <header class="bg-warning text-dark py-6 mt-6">
+        <div class="container text-center">
+            <h1 class="fw-bold">Crea tu cuenta</h1>
+
+            <main class="container py-5">
+                <section class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8">
+                        <div class="card shadow-lg border-0 rounded-4">
+                            <div class="card-body p-4">
+                                <h1 class="text-center mb-4 text-primary">Registra tus datos</h1>
+
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edad" class="form-label">Edad</label>
+                                        <input type="number" class="form-control" id="edad" name="edad" required>
+                                    </div>
+                                
+                                    <div class="col-md-4 mb-3">
+                                        <label for="peso" class="form-label">Peso (kg)</label>
+                                        <input type="number" class="form-control" id="peso" name="peso" required>
+                                    </div>
+                                
+                                    <div class="col-md-4 mb-3">
+                                        <label for="altura" class="form-label">Altura (cm)</label>
+                                        <input type="number" class="form-control" id="altura" name="altura" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="ejercicio" class="form-label">actividad</label>
+                                    <select class="form-select" id="actividad" name="actividad" required>
+                                        <option value="ejercicio">Selecciona una opcion</option>
+                                        <option value="ejercicio">Sedentario (poco o nada de ejercicio)</option>
+                                        <option value="ejercicio">Principiante (1-3 veces por semana)</option>
+                                        <option value="ejercicio">Intermedio (3-5 ves por semana)</option>
+                                        <option value="ejercicio">Avanzado (6-7 veces por semana)</option>
+                                    </select>
+                                </div>
+
+                                <h6 class="text-center mb-4">Selecciona tu genero</h6>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                                  <label class="form-check-label" for="defaultCheck7">
+                                    Hombre
+                                  </label>
+                                </div>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck8">
+                                  <label class="form-check-label" for="defaultCheck8">
+                                    Mujer
+                                  </label>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3"> 
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required minlength="3">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="apellido" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido"  required minlength="3">
+                                </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Correo electrónico o número telefónico</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" name="password"  required minlength="8">
+                                </div>
+
+                                <h6 class="text-center mb-4 text-primary">Advertencia: En esta pagiana no hay manera de recuperar informacion por el momemnto asi que use contraseñas faciles de recordar y guardelas </h6>
+
+                                <h2 class="text-center mb-4 text-primary">Cual es tu objetivo</h2>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                  <label class="form-check-label" for="defaultCheck1">
+                                    Bajar de peso
+                                  </label>
+                                </div>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                  <label class="form-check-labe2" for="defaultCheck2">
+                                    Ganar masa moscular
+                                  </label>
+                                </div>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                                  <label class="form-check-labe3" for="defaultCheck3">
+                                    Mantener tu peso
+                                  </label>
+                                </div>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                                  <label class="form-check-labe4" for="defaultCheck4">
+                                    Controlar tu condicion  (diabetes, hipertensión)
+                                  </label>
+                                </div>
+
+                                <h2 class="text-center mb-4 text-primary">¿Cuales son algunas son tus preferenciias y tus
+                                    restricciones?</h2>
+
+                                <div class="mb-3">
+                                    <label for="condicions" class="form-label">Condiciones de salud</label>
+                                    <select class="form-select" id="condiciones" name="condiciones" required>
+                                        <option value="condicion">Selecciona una opcion</option>
+                                        <option value="condicion">No tengo</option>
+                                        <option value="condicion">Reflujo gastroesofágico (GERD)</option>
+                                        <option value="condicion">Síndrome del intestino irritable (SII)</option>
+                                        <option value="condicion">Diabetes</option>
+                                        <option value="condicion">Hipertensión</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="condicions" class="form-label">Dieta que lleves</label>
+                                    <select class="form-select" id="condiciones" name="condiciones" required>
+                                        <option value="condicion">Selecciona una opcion</option>
+                                        <option value="condicion">No llevo ni una</option>
+                                        <option value="condicion">Vegana</option>
+                                        <option value="condicion">Vegetariana</option>
+                                        <option value="condicion">Keto</option>
+                                        <option value="condicion">Mediterranea</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="intolerancias" class="form-label">Intolerancias</label>
+                                    <select class="form-select" id="intolerancias" name="intolerancias" required>
+                                        <option value="intolerancia">Selecciona una opcion</option>
+                                        <option value="intolerancia">No tengo</option>
+                                        <option value="intolerancia">Intolerancia al gluten</option>
+                                        <option value="intolerancia">Intolerancia a la lactosa</option>
+                                        <option value="intolerancia">Intolerancia a la fructosa</option>
+                                        <option value="intolerancia">Intolerancia a las legumbres</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="alergias" class="form-label">Alergias</label>
+                                    <select class="form-select" id="alergias" name="alergias" required>
+                                        <option value="alergias">Selecciona una opcion</option>
+                                        <option value="alergias">No tengo</option>
+                                        <option value="alergias">Maní (cacahuate)</option>
+                                        <option value="alergias">Frutos secos</option>
+                                        <option value="alergias">Leche de vaca</option>
+                                        <option value="alergias">Huevos</option>
+                                        <option value="alergias">Pescado</option>
+                                        <option value="alergias">Mariscos</option>
+                                        <option value="alergias">Trigo</option>
+                                        <option value="alergias">Soya</option>
+                                    </select>
+                                </div>
+
+                                <h6 class="text-center mb-4">Gustos</h6>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3"> 
+                                    <label for="si-gusta" class="form-label">Que te gusta</label>
+                                    <input type="text" class="form-control" id="si_gusta" name="si_gusta" required>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="no_gusta" class="form-label">Que no te gusta</label>
+                                    <input type="text" class="form-control" id="no_gusta" name="no_gusta"  required>
+                                </div>
+                                </div>
+
+                                <h2 class="text-center mb-4 text-primary">¿Qué tan bien cocinas?</h2>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                                  <label class="form-check-label" for="defaultCheck5">
+                                    No se cocinar
+                                  </label>
+                                </div>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                                  <label class="form-check-label" for="defaultCheck5">
+                                    Soy principiante cocinando
+                                  </label>
+                                </div>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+                                  <label class="form-check-label" for="defaultCheck6">
+                                    Soy un chef aficionado
+                                  </label>
+                                </div>
+
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                                  <label class="form-check-label" for="defaultCheck5">
+                                    Soy un chef experto
+                                  </label>
+                                </div>
+
+                                <div class="d-grid mt-4">
+                                    <a href="{{ url_for('base') }}" class="btn btn-primary btn-lg">Crear cuenta</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+        </div>
+    </header>
+</div>
+
+{%endblock%}
