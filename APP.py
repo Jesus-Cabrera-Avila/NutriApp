@@ -20,9 +20,10 @@ def registro():
         correo = request.form.get('correo', '')
         contrasena = request.form.get('contraseña', '')  
         edad = request.form.get('edad', '')
+        condiciones=request.form.get("condiciones", "")
 
         with open("usuarios.txt", "a", encoding="utf-8") as archivo:
-            archivo.write(f"{correo},{contrasena},{nombre},{apellido},{peso},{altura},{edad},{genero}, {actividad}\n")
+            archivo.write(f"{correo},{contrasena},{nombre},{apellido},{peso},{altura},{edad},{genero}, {actividad}, {condiciones}\n")
 
         return redirect(url_for('base'))
 
@@ -92,7 +93,8 @@ def perfil():
                 "altura": datos[5],
                 "edad": datos[6],
                 "genero": datos[7],
-                "actividad": datos[8]
+                "actividad": datos[8],
+                "condiciones": datos[9]
             }
             break
 
@@ -225,7 +227,7 @@ def search_food():
 @app.route('/api')
 def home():
     return jsonify({
-        "message": "Bienvenido a la API USDA personalizada",
+        "message": "Bienvenido",
         "uso": "/food/<nombre>"
     })
 
