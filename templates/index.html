@@ -5,11 +5,11 @@
 <div class="container text-center">
 
     {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
+        {% if messages %}
         {% for category, message in messages %}
-          <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+            <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
         {% endfor %}
-      {% endif %}
+        {% endif %}
     {% endwith %}
 
     <header class="bg-warning text-dark py-6 mt-6">
