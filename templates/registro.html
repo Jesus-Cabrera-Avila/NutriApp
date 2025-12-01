@@ -2,230 +2,210 @@
 
 {% block contenido %}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-
 <div class="container text-center">
 
-    <header class="bg-warning text-dark py-6 mt-6">
-        <div class="container text-center">
-            <h1 class="fw-bold">Crea tu cuenta</h1>
+    <header class="bg-warning text-dark py-4 mt-4 rounded">
+        <h1 class="fw-bold">Crea tu cuenta</h1>
+    
 
-            <main class="container py-5">
-                <section class="row justify-content-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Registra tus datos</h1>
+    <main class="container py-5">
+        <section class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4">
 
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="edad" class="form-label">Edad</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" required>
-                                    </div>
-                                
-                                    <div class="col-md-4 mb-3">
-                                        <label for="peso" class="form-label">Peso (kg)</label>
-                                        <input type="number" class="form-control" id="peso" name="peso" required>
-                                    </div>
-                                
-                                    <div class="col-md-4 mb-3">
-                                        <label for="altura" class="form-label">Altura (cm)</label>
-                                        <input type="number" class="form-control" id="altura" name="altura" required>
-                                    </div>
+                        <h1 class="text-center mb-4 text-primary">Registra tus datos</h1>
+
+                        <form action="/registro" method="POST">
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="edad" class="form-label">Edad</label>
+                                    <input type="number" class="form-control" id="edad" name="edad" min="1" max="120" required>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="ejercicio" class="form-label">actividad</label>
-                                    <select class="form-select" id="actividad" name="actividad" required>
-                                        <option value="ejercicio">Selecciona una opcion</option>
-                                        <option value="ejercicio">Sedentario (poco o nada de ejercicio)</option>
-                                        <option value="ejercicio">Principiante (1-3 veces por semana)</option>
-                                        <option value="ejercicio">Intermedio (3-5 ves por semana)</option>
-                                        <option value="ejercicio">Avanzado (6-7 veces por semana)</option>
-                                    </select>
+                                <div class="col-md-4 mb-3">
+                                    <label for="peso" class="form-label">Peso (kg)</label>
+                                    <input type="number" class="form-control" id="peso" name="peso" step="0.1" min="1" required>
                                 </div>
 
-                                <h6 class="text-center mb-4">Selecciona tu genero</h6>
+                                <div class="col-md-4 mb-3">
+                                    <label for="altura" class="form-label">Altura (cm)</label>
+                                    <input type="number" class="form-control" id="altura" name="altura" step="0.1" min="30" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 text-start">
+                                <label for="actividad" class="form-label">Nivel de actividad física</label>
+                                <select class="form-select" id="actividad" name="actividad" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="sedentario">Sedentario (poco o nada de ejercicio)</option>
+                                    <option value="principiante">Principiante (1-3 veces por semana)</option>
+                                    <option value="intermedio">Intermedio (3-5 veces por semana)</option>
+                                    <option value="avanzado">Avanzado (6-7 veces por semana)</option>
+                                </select>
+                            </div>
+
+                            <h6 class="text-center mb-3">Selecciona tu género</h6>
+                            <div class="d-flex justify-content-center gap-4 mb-4">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck9" name="defaultCheck9">
-                                  <label class="form-check-label" for="defaultCheck9">
-                                    Hombre
-                                  </label>
+                                    <input class="form-check-input" type="radio" name="genero" id="genero_m" value="masculino" required>
+                                    <label class="form-check-label" for="genero_m">Hombre</label>
                                 </div>
 
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck10" name="defaultCheck10">
-                                  <label class="form-check-label" for="defaultCheck10">
-                                    Mujer
-                                  </label>
+                                    <input class="form-check-input" type="radio" name="genero" id="genero_f" value="femenino" required>
+                                    <label class="form-check-label" for="genero_f">Mujer</label>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-3"> 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="genero" id="genero_o" value="otro" required>
+                                    <label class="form-check-label" for="genero_o">Otro / Prefiero no decir</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required minlength="3">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required minlength="2">
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label for="apellido" class="form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="apellido" name="apellido"  required minlength="3">
+                                    <input type="text" class="form-control" id="apellido" name="apellido" required minlength="2">
                                 </div>
-                                </div>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Correo electrónico o número telefónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico o número telefónico</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password"  required minlength="8">
-                                </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" required minlength="8" placeholder="Mínimo 8 caracteres">
+                            </div>
 
-                                <h6 class="text-center mb-4 text-primary">Advertencia: En esta pagiana no hay manera de recuperar informacion por el momemnto asi que use contraseñas faciles de recordar y guardelas </h6>
+                            <h6 class="text-center mb-4 text-primary">Advertencia: En esta página no hay manera de recuperar información por el momento, así que usa contraseñas fáciles de recordar y guárdalas</h6>
 
-                                <h2 class="text-center mb-4 text-primary">Cual es tu objetivo</h2>
-
+                            <h2 class="text-center mb-3 text-primary">¿Cuál es tu objetivo?</h2>
+                            <div class="mb-3 text-start">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    Bajar de peso
-                                  </label>
+                                    <input class="form-check-input" type="checkbox" id="objetivo_bajar" name="objetivos[]" value="bajar_peso">
+                                    <label class="form-check-label" for="objetivo_bajar">Bajar de peso</label>
                                 </div>
-
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" name="defaultCheck2">
-                                  <label class="form-check-labe2" for="defaultCheck2">
-                                    Ganar masa moscular
-                                  </label>
+                                    <input class="form-check-input" type="checkbox" id="objetivo_ganar" name="objetivos[]" value="ganar_masa">
+                                    <label class="form-check-label" for="objetivo_ganar">Ganar masa muscular</label>
                                 </div>
-
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" name="defaultCheck3">
-                                  <label class="form-check-labe3" for="defaultCheck3">
-                                    Mantener tu peso
-                                  </label>
+                                    <input class="form-check-input" type="checkbox" id="objetivo_mantener" name="objetivos[]" value="mantener_peso">
+                                    <label class="form-check-label" for="objetivo_mantener">Mantener tu peso</label>
                                 </div>
-
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck4" name="defaultCheck4"> 
-                                  <label class="form-check-labe4" for="defaultCheck4">
-                                    Controlar tu condicion  (diabetes, hipertensión)
-                                  </label>
+                                    <input class="form-check-input" type="checkbox" id="objetivo_control" name="objetivos[]" value="control_condicion">
+                                    <label class="form-check-label" for="objetivo_control">Controlar tu condición (diabetes, hipertensión, etc.)</label>
                                 </div>
+                            </div>
 
-                                <h2 class="text-center mb-4 text-primary">¿Cuales son algunas son tus preferenciias y tus
-                                    restricciones?</h2>
+                            <div class="mb-3">
+                                <label for="condiciones_salud" class="form-label">Condiciones de salud</label>
+                                <select class="form-select" id="condiciones_salud" name="condiciones_salud" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="ninguna">No tengo</option>
+                                    <option value="gerd">Reflujo gastroesofágico (GERD)</option>
+                                    <option value="sii">Síndrome del intestino irritable (SII)</option>
+                                    <option value="diabetes">Diabetes</option>
+                                    <option value="hipertension">Hipertensión</option>
+                                </select>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="condicions" class="form-label">Condiciones de salud</label>
-                                    <select class="form-select" id="condiciones" name="condiciones" required>
-                                        <option value="condicion">Selecciona una opcion</option>
-                                        <option value="condicion">No tengo</option>
-                                        <option value="condicion">Reflujo gastroesofágico (GERD)</option>
-                                        <option value="condicion">Síndrome del intestino irritable (SII)</option>
-                                        <option value="condicion">Diabetes</option>
-                                        <option value="condicion">Hipertensión</option>
-                                    </select>
-                                </div>
+                            <div class="mb-3">
+                                <label for="dieta" class="form-label">Dieta que llevas</label>
+                                <select class="form-select" id="dieta" name="dieta" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="ninguna">No llevo ninguna</option>
+                                    <option value="vegana">Vegana</option>
+                                    <option value="vegetariana">Vegetariana</option>
+                                    <option value="keto">Keto</option>
+                                    <option value="mediterranea">Mediterránea</option>
+                                </select>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="condicions" class="form-label">Dieta que lleves</label>
-                                    <select class="form-select" id="condiciones" name="condiciones" required>
-                                        <option value="condicion">Selecciona una opcion</option>
-                                        <option value="condicion">No llevo ni una</option>
-                                        <option value="condicion">Vegana</option>
-                                        <option value="condicion">Vegetariana</option>
-                                        <option value="condicion">Keto</option>
-                                        <option value="condicion">Mediterranea</option>
-                                    </select>
-                                </div>
+                            <div class="mb-3">
+                                <label for="intolerancias" class="form-label">Intolerancias</label>
+                                <select class="form-select" id="intolerancias" name="intolerancias">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="ninguna">No tengo</option>
+                                    <option value="gluten">Intolerancia al gluten</option>
+                                    <option value="lactosa">Intolerancia a la lactosa</option>
+                                    <option value="fructosa">Intolerancia a la fructosa</option>
+                                    <option value="legumbres">Intolerancia a las legumbres</option>
+                                </select>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="intolerancias" class="form-label">Intolerancias</label>
-                                    <select class="form-select" id="intolerancias" name="intolerancias" required>
-                                        <option value="intolerancia">Selecciona una opcion</option>
-                                        <option value="intolerancia">No tengo</option>
-                                        <option value="intolerancia">Intolerancia al gluten</option>
-                                        <option value="intolerancia">Intolerancia a la lactosa</option>
-                                        <option value="intolerancia">Intolerancia a la fructosa</option>
-                                        <option value="intolerancia">Intolerancia a las legumbres</option>
-                                    </select>
-                                </div>
+                            <div class="mb-3">
+                                <label for="alergias" class="form-label">Alergias</label>
+                                <select class="form-select" id="alergias" name="alergias">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="ninguna">No tengo</option>
+                                    <option value="mani">Maní (cacahuate)</option>
+                                    <option value="frutos_secos">Frutos secos</option>
+                                    <option value="leche_vaca">Leche de vaca</option>
+                                    <option value="huevos">Huevos</option>
+                                    <option value="pescado">Pescado</option>
+                                    <option value="mariscos">Mariscos</option>
+                                    <option value="trigo">Trigo</option>
+                                    <option value="soya">Soya</option>
+                                </select>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="alergias" class="form-label">Alergias</label>
-                                    <select class="form-select" id="alergias" name="alergias" required>
-                                        <option value="alergias">Selecciona una opcion</option>
-                                        <option value="alergias">No tengo</option>
-                                        <option value="alergias">Maní (cacahuate)</option>
-                                        <option value="alergias">Frutos secos</option>
-                                        <option value="alergias">Leche de vaca</option>
-                                        <option value="alergias">Huevos</option>
-                                        <option value="alergias">Pescado</option>
-                                        <option value="alergias">Mariscos</option>
-                                        <option value="alergias">Trigo</option>
-                                        <option value="alergias">Soya</option>
-                                    </select>
-                                </div>
-
-                                <h6 class="text-center mb-4">Gustos</h6>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3"> 
-                                    <label for="si-gusta" class="form-label">Que te gusta</label>
-                                    <input type="text" class="form-control" id="si_gusta" name="si_gusta" required>
+                            <h6 class="text-center mb-3">Gustos</h6>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="si_gusta" class="form-label">Qué te gusta</label>
+                                    <input type="text" class="form-control" id="si_gusta" name="si_gusta" placeholder="Ej. pollo, frutas, etc.">
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="no_gusta" class="form-label">Que no te gusta</label>
-                                    <input type="text" class="form-control" id="no_gusta" name="no_gusta"  required>
+                                    <label for="no_gusta" class="form-label">Qué no te gusta</label>
+                                    <input type="text" class="form-control" id="no_gusta" name="no_gusta" placeholder="Ej. cilantro, mariscos, etc.">
                                 </div>
-                                </div>
-
-                                <h2 class="text-center mb-4 text-primary">¿Qué tan bien cocinas?</h2>
-
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck5" name="defaultCheck5">
-                                  <label class="form-check-label" for="defaultCheck5">
-                                    No se cocinar
-                                  </label>
-                                </div>
-
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck6" name="defaultCheck6">
-                                  <label class="form-check-label" for="defaultCheck6">
-                                    Soy principiante cocinando
-                                  </label>
-                                </div>
-
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck7" name="defaultCheck7">
-                                  <label class="form-check-label" for="defaultCheck7">
-                                    Soy un chef aficionado
-                                  </label>
-                                </div>
-
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck8" name="defaultCheck8">
-                                  <label class="form-check-label" for="defaultCheck8">
-                                    Soy un chef experto
-                                  </label>
-                                </div>
-
-                                <div class="d-grid mt-4">
-                                    <a href="{{ url_for('base') }}" class="btn btn-primary btn-lg">Crear cuenta</a>
-                                </div>
-
                             </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
 
-        </div>
+                            <h2 class="text-center mb-3 text-primary">¿Qué tan bien cocinas?</h2>
+                            <div class="mb-3 text-start">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="nivel_cocina" id="cocina_0" value="no_se" required>
+                                    <label class="form-check-label" for="cocina_0">No sé cocinar</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="nivel_cocina" id="cocina_1" value="principiante" required>
+                                    <label class="form-check-label" for="cocina_1">Soy principiante cocinando</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="nivel_cocina" id="cocina_2" value="aficionado" required>
+                                    <label class="form-check-label" for="cocina_2">Soy un chef aficionado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="nivel_cocina" id="cocina_3" value="experto" required>
+                                    <label class="form-check-label" for="cocina_3">Soy un chef experto</label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Crear cuenta</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     </header>
 </div>
 
-{%endblock%}
+{% endblock %}

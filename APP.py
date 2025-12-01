@@ -8,48 +8,53 @@ app.secret_key = "Super_secreta_key"
 def base():
     return render_template('base.html')
 
-@app.route('/registro', methods=['GET', 'POST'])
+usuario = {}
+
+@app.route("/registro", methods=["GET", "POST"])
 def registro():
-    if request.method == 'POST':
-        nombre = request.form.get('nombre', '')
-        apellido = request.form.get('apellido', '')
-        peso = request.form.get('peso', '')
-        altura = request.form.get('altura', '')
-        actividad = request.form.get('actividad', '')
-        genero = request.form.get('genero', '')
-        correo = request.form.get('correo', '')
-        contrasena = request.form.get('contraseña', '')  
-        edad = request.form.get('edad', '')
-        condiciones=request.form.get("condiciones", "")
+    global usuario
 
-        with open("usuarios.txt", "a", encoding="utf-8") as archivo:
-            archivo.write(f"{correo},{contrasena},{nombre},{apellido},{peso},{altura},{edad},{genero}, {actividad}, {condiciones}\n")
+    if request.method == "POST":
+        usuario = {
+            "edad": request.form.get("edad"),
+            "peso": request.form.get("peso"),
+            "altura": request.form.get("altura"),
+            "actividad": request.form.get("actividad"),
+            "genero": request.form.get("genero"),
+            "email": request.form.get("email"),
+            "password": request.form.get("password")
+        }
 
-        return redirect(url_for('base'))
+        return redirect("/iniciar_sesion")
 
-    return render_template('registro.html')
+    return render_template("registro.html")
 
-@app.route('/iniciar_sesion', methods=['GET', 'POST'])
+@app.route("/iniciar_sesion", methods=["GET", "POST"])
 def iniciar_sesion():
-    if request.method == 'POST':
-        correo = request.form.get('correo', '')
-        contrasena = request.form.get('contraseña', '')
 
-        try:
-            with open("usuarios.txt", "r", encoding="utf-8") as archivo:
-                usuarios = archivo.readlines()
-        except FileNotFoundError:
-            usuarios = []
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
 
-        for usuario in usuarios:
-            datos = usuario.strip().split(',')
-            if len(datos) >= 2 and correo == datos[0] and contrasena == datos[1]:
-                session['usuario'] = datos[2] if len(datos) > 2 else correo
-                return redirect(url_for('registro'))
+        if usuario and email == usuario["email"] and password == usuario["password"]:
+            session["usuario"] = email
+            return redirect("/perfil")
+        else:
+            return render_template("iniciar_sesion.html", error="Correo o contraseña incorrectos")
 
-        return render_template('iniciar_sesion.html', error="La contraseña o el Gmail son incorrectos")
+    return render_template("iniciar_sesion.html")
 
-    return render_template('iniciar_sesion.html')
+@app.route("/perfil")
+def perfil():
+    if "usuario" not in session:
+        return redirect("/iniciar_sesion")
+
+    return render_template("perfil.html", usuario=usuario)
+
+@app.route("/cerrar")
+def cerrar():
+    session.clear()
+    return redirect("/")
 
 @app.route('/objetivos')
 def objetivos():
@@ -59,49 +64,9 @@ def objetivos():
 def recetas():
     return render_template('recetas.html')
 
-@app.route('/cerrar')
-def cerrar():
-    session.pop('usuario', None)
-    return redirect(url_for('inicio'))
-
 @app.route('/p_y_r')
 def p_y_r():
     return render_template('p_y_r.html')
-
-@app.route('/perfil')
-def perfil():
-    if 'usuario' not in session:
-        return redirect(url_for('iniciar_sesion'))
-
-    usuario_sesion = session['usuario']
-    datos_usuario = None
-
-    try:
-        with open("usuarios.txt", "r", encoding="utf-8") as archivo:
-            usuarios = archivo.readlines()
-    except FileNotFoundError:
-        usuarios = []
-
-    for usuario in usuarios:
-        datos = usuario.strip().split(',')
-        if len(datos) > 2 and datos[2] == usuario_sesion:
-            datos_usuario = {
-                "correo": datos[0],
-                "nombre": datos[2],
-                "apellido": datos[3],
-                "peso": datos[4],
-                "altura": datos[5],
-                "edad": datos[6],
-                "genero": datos[7],
-                "actividad": datos[8],
-                "condiciones": datos[9]
-            }
-            break
-
-    if datos_usuario is None:
-        return "No se encontró la información del usuario."
-
-    return render_template('perfil.html', usuario=datos_usuario)
 
 @app.route('/calculadoras', methods=["GET", "POST"])
 def calculadoras():

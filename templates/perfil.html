@@ -2,38 +2,19 @@
 
 {% block contenido %}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<div class="container mt-5">
 
+    <h1 class="text-primary">Tu Perfil</h1>
+    <hr>
 
-<div class="container text-center">
+    <p><strong>Edad:</strong> {{ usuario.edad }}</p>
+    <p><strong>Peso:</strong> {{ usuario.peso }} kg</p>
+    <p><strong>Altura:</strong> {{ usuario.altura }} cm</p>
+    <p><strong>Actividad física:</strong> {{ usuario.actividad }}</p>
+    <p><strong>Género:</strong> {{ usuario.genero }}</p>
 
-    <header class="bg-warning text-dark py-6 mt-6">
-        <div class="container text-center">
+    <p><strong>Correo registrado:</strong> {{ usuario.email }}</p>
 
-            <main class="container py-5">
-                <section class="row justify-content-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="card shadow-lg border-0 rounded-4">
-                            <div class="card-body p-4">
-                                <h1 class="text-center mb-4 text-primary">Mi perfil</h1>
-
-                                    <p>Nombre: {{ usuario.nombre }}</p>
-                                    <p>Apellido: {{ usuario.apellido }}</p>
-                                    <p>Peso: {{ usuario.peso }}</p>
-                                    <p>Altura: {{ usuario.altura }}</p>
-                                    <p>Edad: {{ usuario.edad }}</p>
-                                    <p>Género: {{ usuario.genero }}</p>
-                                    <p>Actividad: {{ usuario.actividad }}</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-        </div>
-    </header>
 </div>
 
 {% endblock %}
