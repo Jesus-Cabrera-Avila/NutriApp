@@ -101,6 +101,93 @@ def calculadoras():
                 resultado["tmb"] = round(tmb, 2)
             except ValueError:
                 return "Error: datos inválidos."
+            
+        elif calculadora == "gct":
+            try:
+                peso = float(request.form.get("peso", 0))
+                altura = float(request.form.get("altura", 0))
+                edad = int(request.form.get("edad", 0))
+                sexo = request.form.get("sexo", "").lower()
+                factor = float(request.form.get("actividad", 1.2))
+
+                if sexo == "hombre":
+                    tmb = 10 * peso + 6.25 * altura - 5 * edad + 5
+                else:
+                    tmb = 10 * peso + 6.25 * altura - 5 * edad - 161
+
+                gct = tmb * factor
+                resultado["gct"] = round(gct, 2)
+
+            except ValueError:
+                return "Error: verifica que ingresaste datos válidos."
+            
+        elif calculadora == "peso_ideal":
+            try:
+                sexo = request.form.get("sexo", "")
+                edad = float(request.form.get("edad", 0))
+                peso = float(request.form.get("peso", 0))
+                altura_cm = float(request.form.get("altura", 0))
+
+                if altura_cm <= 0:
+                    return "Error: la altura no puede ser 0 o negativa."
+
+                altura_m = altura_cm / 100.0
+
+                peso_ideal = 22 * (altura_m ** 2)
+
+                resultado["peso_ideal"] = round(peso_ideal, 2)
+
+            except ValueError:
+                return "Error: ingresa solo números válidos."
+            
+        elif calculadora == "macros":
+            try:
+                sexo = request.form.get("sexo", "").lower()
+                edad = int(request.form.get("edad", 0))
+                peso = float(request.form.get("peso", 0))
+                altura = float(request.form.get("altura", 0))
+                actividad = request.form.get("actividad", "")
+                objetivo = request.form.get("objetivo", "")
+
+                if altura <= 0 or peso <= 0 or edad <= 0:
+                    return "Error: los datos no pueden ser 0 o negativos."
+
+                if sexo == "hombre":
+                    tmb = 10 * peso + 6.25 * altura - 5 * edad + 5
+                else:
+                    tmb = 10 * peso + 6.25 * altura - 5 * edad - 161
+
+                factores = {
+                    "sedentario": 1.2,
+                    "principiante": 1.375,
+                    "intermedio": 1.55,
+                    "avanzado": 1.725
+                }
+
+                factor = factores.get(actividad, 1.2)
+
+                cal_mantenimiento = tmb * factor
+
+                if objetivo == "ganar masa muscular":
+                    cal_objetivo = cal_mantenimiento + 300
+                elif objetivo == "bajar de peso":
+                    cal_objetivo = cal_mantenimiento - 300
+                else:
+                    cal_objetivo = cal_mantenimiento
+
+                proteinas = peso * 2
+                grasas = peso * 0.8
+                carbohidratos = (cal_objetivo - (proteinas * 4 + grasas * 9)) / 4
+
+                resultado["calorias_objetivo"] = round(cal_objetivo, 2)
+                resultado["proteinas"] = round(proteinas, 2)
+                resultado["grasas"] = round(grasas, 2)
+                resultado["carbohidratos"] = round(carbohidratos, 2)
+
+            except ValueError:
+                return "Error: ingresa solo números válidos."
+
+                return "Error: datos inválidos."
 
     return render_template("calculadoras.html", resultado=resultado)
 
