@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import requests
 
 app = Flask(__name__)
-app.secret_key = "Super_secreta_key"
+app.secret_key = "super_dupe_mega_ultra_milti_key_por_favor_no_robar"
 
 @app.route('/')
 def base():
@@ -334,4 +334,5 @@ def food_lookup(name):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
